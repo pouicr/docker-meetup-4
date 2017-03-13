@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Docker meetup #4</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            font-family: 'courier-new';
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'arial-black';
+            font-weight: normal;
+            color: #2E64FE;
+        }
+
+        .inverse {
+            background: #2E64FE;
+        }
+
+        .inverse h1,
+        .inverse h2,
+        .inverse h3 {
+            color: #58D3F7;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 150px !important;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 500px;
+        }
+
+        .remark-code,
+        .remark-inline-code {
+            font-family: 'arial--black';
+            font-size: 25px;
+        }
+        .remark-slide-content {
+            font-family: 'sans-serif';
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="/js/remark-latest.min.js">
+    </script>
+    <script>
+        sourceUrls = [
+            'intro.md',
+        ]
+
+        var xmlhttp = new XMLHttpRequest();
+
+        var source = ""
+
+        for (var i = 0; i < sourceUrls.length; i++) {
+            xmlhttp.open('GET', sourceUrls[i], false);
+            xmlhttp.send();
+
+            source += xmlhttp.responseText;
+
+            // Files shouldn't have --- at the head or foot
+            // It is added automatically here
+            if (i + 1 < sourceUrls.length) {
+                source += "\n---\n"
+            }
+        };
+
+        var slideshow = remark.create({
+            source: source
+        });
+    </script>
+</body>
+
+</html>
